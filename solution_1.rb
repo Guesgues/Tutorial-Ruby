@@ -1,4 +1,5 @@
 class Tutorial
+
   def solution(x)
     str = x.to_s
     num = str.chars.sort.join.reverse!
@@ -19,58 +20,60 @@ class Tutorial
       str = 'c' * i
       c -= i
     end
+
     i = 1
+
     while i > 0
       if str[-1] == 'a'
         if b > c
-          i = if b + c >= a
-                [2, b].min
-              else
-                [1, b].min
-              end
+          if b + c >= a
+            i =  [2, b].min
+          else
+            i = [1, b].min
+          end
           str += 'b' * i
           b -= i
         else
-          i = if b + c >= a
-                [2, c].min
-              else
-                [1, c].min
-              end
+          if b + c >= a
+            i = [2, c].min
+          else
+            i = [1, c].min
+          end
           str += 'c' * i
           c -= i
         end
       elsif str[-1] == 'b'
         if a > c
-          i = if a + c >= b
-                [2, a].min
-              else
-                [1, a].min
-              end
+          if a + c >= b
+            i = [2, a].min
+          else
+            i = [1, a].min
+          end
           str += 'a' * i
           a -= i
         else
-          i = if a + c >= b
-                [2, c].min
-              else
-                min(1, c)
-              end
+          if a + c >= b
+            i =[ 2, c].min
+          else
+            i = min(1, c)
+          end
           str += 'c' * i
           c -= i
         end
       elsif a > b
-        i = if a + b >= c
-              [2, a].min
-            else
-              [1, a].min
-            end
+        if a + b >= c
+          i = [2, a].min
+        else
+          i = [1, a].min
+        end
         str += 'a' * i
         a -= i
       else
-        i = if a + b >= c
-              [2, b].min
-            else
-              [1, b].min
-            end
+        if a + b >= c
+          i = [2, b].min
+        else
+          i = [1, b].min
+        end
         str += 'b' * i
         b -= i
       end
